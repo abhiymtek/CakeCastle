@@ -1,0 +1,88 @@
+
+<head>
+  <style>
+    ::placeholder{
+      color: whitesmoke;
+    }
+    .inp{
+      background: transparent;
+      border: 1px solid rgb(231, 4, 91);
+    }
+    .container{
+      display: block;
+      margin:40px;
+      padding: 30px;
+    }
+    .header{
+      margin: 20px 0px 0px 0px;
+      text-align: center;
+    }
+    header,footer,body{
+      background-image: -webkit-linear-gradient(top left, rgb(232, 217, 228), rgb(229, 159, 207) 10%, rgb(216, 69, 165) 30%, rgb(215, 216, 143) 60%, rgb(238, 236, 117))
+    }
+  </style>
+</head>
+<body>
+  <h3 class="header"><fa-icon [icon]="faCake"></fa-icon>  ADD YOUR OWN CAKE  <fa-icon [icon]="faCake"></fa-icon></h3>
+  <div class="container" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+      <form [formGroup]="cakeForm" (submit)="cakeForm.valid && addcake()">  
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name of Cake</label>
+            <input formControlName="name" class="form-control inp" aria-describedby="nameHelp" placeholder="Example: Choclate Cake" [(ngModel)]="cakedata.name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Price</label>
+            <input formControlName="price" class="form-control inp" aria-describedby="weightHelp" placeholder="Example: ₹100.00" [(ngModel)]="cakedata.price">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Type of cake</label>
+            <select class="form-select inp" formControlName="type">
+                <option value="">Please select from the list</option>
+                <option value="Birthday Cake">Birthday Cake</option>
+                <option value="Fruit Cake">Fruit Cake</option>
+                <option value="Muffin">Muffin</option>
+                <option value="Sponge Cake">Sponge Cake</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Weight</label>
+            <input formControlName="weight" class="form-control inp" aria-describedby="weightHelp" placeholder="Example: 5 Kilograms" [(ngModel)]="cakedata.weight">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Ingredients</label>
+            <input formControlName="ingredient" class="form-control inp" aria-describedby="emailHelp" placeholder="Example: Egg, Flour, Sugar, ..." [(ngModel)]="cakedata.ingredient">
+          </div>
+          
+          <div class="form-group">
+            <label for="imageUrl">Upload a image</label>
+            <div class="d-flex">
+              <input type="file" (change)="getFile($event)">
+              <button class="btn btn-success" (click)="upload()">Upload</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <div>
+                <input class="inp" id="male" type="radio" value="eggless" name="eggless" formControlName="eggless">
+                  <label for="male">Eggless</label>
+              </div>
+            
+              <div>
+                <input class="inp" id="female" type="radio" value="egg" name="eggless" formControlName="eggless">
+                  <label for="female">Egg</label>
+                </div>
+            </div>
+
+          <div class="form-group">
+              <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+              <textarea formControlName="description" class="form-control inp" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="cakedata.description"></textarea>
+            </div>
+
+            <button style="margin-top:1em" type="submit" class="btn btn-primary">Add Cake</button>
+        </form>
+        
+  </div>
+</body>
