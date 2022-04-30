@@ -1,0 +1,34 @@
+<div class="container" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+  <h2 class="mt-5">Your Shopping Cart</h2>
+    <div *ngIf="cartitems.length">
+      <table  class="table">
+      <thead>
+        <tr style="text-align: center;">
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Image</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Action</th>
+          <th scope="col">Remove from cart</th>
+
+        </tr>
+      </thead>
+      <tbody style="text-align: center;">
+        <tr *ngFor="let item of cartitems; let i=index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{item.name}}</td>
+          <td><img style="height: 60px;width:60px;" [src]="item.image" alt=""></td>
+          <td>{{item.price | currency:"INR"}}</td>
+          <td>{{item.quantity}}</td>
+          <td><button class="btn btn-danger"  (click)="increDecre('-',i)">-</button>    {{item.quantity}}   <button (click)="increDecre('+',i)" class="btn btn-info">+</button></td> 
+          <td><button (click)="removeItem(item,i)" class="btn btn-danger"><fa-icon [icon]="faTrash"></fa-icon></button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <h4>Total Price : {{totalprice | currency:"INR"}}</h4>
+      <button class="btn btn-warning" routerLink="/checkout" style="float:right">Checkout</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container" style="border: solid 2px; margin-top: 20px; background-color: rgb(253, 199, 133); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+    <header style="text-align: center; margin: 30px; color: rgb(184, 11, 11);"><h2>ORDER SUMMARY</h2></header>
+    <table class="table">
+        <thead style="text-align: center;">
+          <tr>
+            <th scope="col">Items</th>
+            <th scope="col">Name</th>
+            <th scope="col">Cake</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody style="text-align: center;">
+          <tr *ngFor="let item of cartItems ; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{item.name}}</td>
+            <td><img style="height: 60px; width:60px" [src]="item.image" alt=""></td>
+            <td>{{item.price}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.quantity * item.price | currency:"INR"}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h4 style="color: forestgreen; text-align: left;">Total Amount: ₹{{totAmt}}.00</h4>
+        <div class="d-flex flex-wrap justify-content-between " style="height: 50px; text-align: justify;">
+          <button type="button" class="btn-success" (click)="order()">Place Order</button>
+        </div>
+      <div *ngIf="userdata" style="margin-top:2em; color: brown;">
+          <h5><u>Order will be delivered to:</u></h5>
+          <p style="font-size:medium"><b> {{userdata.name}}, 
+             {{userdata.address}}, 
+             {{userdata.city}}, 
+             {{userdata.pincode}}</b></p>
+      </div>
+
+      <div *ngIf="!userdata">
+        <h4>Please Provide The Delivery Address </h4>
+      </div>
+      
+</div>
+

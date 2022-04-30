@@ -1,0 +1,7 @@
+<div class="sort" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+    <button style="margin-left: 10px;" (click)="ascsort()" class="btn btn-dark">Low to High</button> 
+    <button style="margin: 10px;" (click)="dscsort()" class="btn btn-dark">High to Low</button>
+</div>
+<div class="row">
+    <app-cake *ngFor="let eachcake of cakes" class="col" [cakedata]="eachcake"></app-cake>
+</div>

@@ -1,0 +1,48 @@
+<div class="container" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+     <form #addressForm="ngForm" (submit)="addressForm.valid  && addAddress()" >
+        <!-- {{addressForm.valid}} -->
+        <div class="form-group mt3" style="margin: 10px 0px;">
+            <!-- {{name.valid}} -->
+            <label  for="">Name</label>
+            <input name="name" required #name="ngModel" [(ngModel)]="userdata.name" type="text" class="form-control" required>
+            <div style="color: red;" *ngIf="addressForm.submitted && name.errors">
+                <label *ngIf="name.errors?.['required']">Please provide your Name</label>
+            </div>
+        </div>
+        <div class="form-group mt3" style="margin: 10px 0px;">
+            <!-- {{addr.valid}} -->
+            <label for="">Address</label>
+            <input  name="address" #addr="ngModel" [(ngModel)]="userdata.address" type="text" class="form-control" required>
+            <div style="color: red;" *ngIf="addressForm.submitted && addr.errors">
+                <label *ngIf="addr.errors['required']">Address is required</label>
+            </div>
+        </div>
+        <div class="form-group mt3" style="margin: 10px 0px;">
+            <!-- {{city.valid}} -->
+            <label for="">City</label>
+            <input name="city" #city="ngModel" [(ngModel)]="userdata.city" type="text" class="form-control" required>
+            <div style="color: red;" *ngIf="addressForm.submitted && city.errors">
+                <label *ngIf="city.errors['required']">Enter your city name</label>
+            </div>
+        </div>
+        <div class="form-group mt3" style="margin: 10px 0px;">
+            <!-- {{pin.valid}} -->
+            <label for="">Pincode</label>
+            <input  name="pincode" #pin="ngModel" [(ngModel)]="userdata.pincode" type="text" class="form-control" required>
+            <div style="color: red;" *ngIf="addressForm.submitted && pin.errors">
+                <label *ngIf="pin.errors['required']">Pincode is required</label>
+            </div>
+        </div>
+        <div class="form-group mt3" style="margin: 10px 0px;">
+            <!-- {{ph.valid}} -->
+            <label for="">Phone</label>
+            <input type="number"  name="phone"  #ph="ngModel" [(ngModel)]="userdata.phone" type="text" class="form-control" required>
+            <div style="color: red;" *ngIf="addressForm.submitted && ph.errors">
+                <label *ngIf="ph.errors['required']">Phone number is Required</label>
+            </div>
+        </div>
+        <div class="form-group mt3">
+            <button class="btn btn-primary">Add Address</button>
+        </div>
+    </form>
+</div>

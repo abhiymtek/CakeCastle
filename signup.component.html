@@ -1,0 +1,43 @@
+<div class="container" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+    <div style="width:40%; margin: auto; background-color: beige;">
+        <div style="width: 50%; margin: auto;">
+          <form [formGroup]="signupForm" >
+              <h1>Signup Now</h1>
+              <div *ngIf="respErr" class="form-group mt3" style="margin: 10px 0px;">
+                <label class="alert alert-danger">{{respErr}}</label>
+              </div>
+              <div class="form-group mt3" style="margin: 10px 0px;">
+                  <label for="">Name</label>
+                  <input   type="text" class="form-control" required>
+              </div>
+              <div class="form-group mt3" style="margin: 10px 0px;">
+                  <label for="">Email ID</label>
+                  <input formControlName="abhilash" type="text" class="form-control" required>
+              </div>
+              <div class="form-group mt3" style="margin: 10px 0px;">
+                  <label for="">Password</label>
+                  <input   type="password" class="form-control" required>
+              </div>
+              <div class="form-group mt3" style="margin: 10px 0px;">
+                  <button (click)="signup(); showSuccess()" class="btn btn-primary">Signup</button>
+              </div>
+          </form>  
+        </div>
+    </div>
+    <!-- <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index ">
+            <td>{{user.email}}</td>
+            <td>{{user.name}}</td>
+            <td><button (click)="deleteUser(i); showDeletion()" class="btn btn-danger">Delete</button></td>
+          </tr>
+        </tbody>
+      </table> -->
+</div>

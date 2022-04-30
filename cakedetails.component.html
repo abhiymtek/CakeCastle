@@ -1,0 +1,44 @@
+<div *ngIf="cake" class="container mt-4" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;border: 5px solid rgb(122, 16, 16); padding: 20px; background-color: rgb(251, 255, 203);">
+    <div>
+        <div class="view overlay rounded z-depth-1 main-img">
+            <a href={{cake.image}}>
+                <img src={{cake.image}} align="right" height="400">
+            </a>
+            </div>
+        <div>
+            <h2>{{cake.name}}</h2>
+        </div>
+        <div>
+            <p class="mb-3 text-muted">Reviews: {{cake.reviews}}</p>
+            <p class="mb-3 text-muted">Ratings: {{cake.ratings}}</p>
+            <p style="font-size: larger;"><span class="mr-1">PRICE: <strong style="color: brown;">{{cake.price | currency:"INR"}}</strong></span></p>
+            <p class="pt-2" style="font-size:larger;"><b>{{cake.description}}</b></p>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-sm table-borderless b-0">
+               <tbody>
+                   <tr>
+                       <th class="pl-0 w-25" scope="row"><strong>Flavour</strong></th>
+                       <td>{{cake.flavour}}</td>
+                   </tr>
+                   <tr>
+                       <th class="pl-0 w-25" scope="row"><strong>Ingredients</strong></th>
+                       <td>{{cake.ingredients.join()}}</td>
+                   </tr>
+                   <tr>
+                       <th class="pl-0 w-25" scope="row"><strong>Occasion</strong></th>
+                       <td>{{cake.type}}</td>
+                   </tr>
+                   <tr>
+                       <th class="pl-0 w-25" scope="row"><strong>Quantity</strong></th>
+                       <td>{{cake.weight}} Kg</td>
+                   </tr>
+               </tbody>
+            </table>
+        </div> 
+        <div style="text-align:justify;">
+            <button *ngIf="!isadding" (click)="addtocart()" class="fas fa-shopping-cart pr-2" class="btn btn-info" type="button">Add to cart <fa-icon [icon]="faAdding"></fa-icon></button>
+            <button *ngIf="isadding" disabled class="fas fa-shopping-cart pr-2" class="btn btn-info" type="button">Adding to cart...Please wait <fa-icon [icon]="faAddCart"></fa-icon></button>
+        </div>
+    </div>
+</div>
